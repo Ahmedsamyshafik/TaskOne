@@ -1,0 +1,108 @@
+﻿@model TaskOne.Pagination.PaginatedResult<TaskOne.ViewModel.EmployeeVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="AddEmployee">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                DateOfBirth
+            </th>
+            <th>
+                Mobile
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                HireDate
+            </th>
+            <th>
+                Salary
+            </th>
+            <th>
+                ProfileImage
+            </th>
+            <th>
+                CreatedDate
+            </th>
+            <th>
+                ModifiedDate
+            </th>
+            <th>
+                CreatedByUser
+            </th>
+            <th>
+                ModifiedByUser
+            </th>
+            <th>
+                Department
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Date)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mobile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HireDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                            <img  src="@item.ProfileImageUrl" height="50" width="50" alt="No Image"/>
+                   
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                        <a asp-action="UpdateEmployee" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="GetEmployeeById" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="DeleteEmployee" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+
+
+        }
+    </tbody>
+
+</table>
+
+

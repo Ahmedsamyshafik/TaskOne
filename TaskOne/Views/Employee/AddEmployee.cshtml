@@ -1,0 +1,76 @@
+﻿@model TaskOne.ViewModel.AddEmployeVM
+
+@{
+    ViewData["Title"] = "AddEmployee";
+}
+
+<h1>AddEmployee</h1>
+
+<h4>employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddEmployee" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Salary" class="control-label"></label>
+                <input asp-for="Salary" class="form-control" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfileImage" class="control-label"></label>
+                <input asp-for="ProfileImage" class="form-control" />
+                <span asp-validation-for="ProfileImage" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="CreatedBy" class="control-label"></label>
+                <select asp-for="CreatedBy" class="form-control" asp-items="@(ViewBag.CreatedBy)">
+                 <option value="">Select User</option>
+                </select> 
+           </div>
+
+            <div class="form-group">
+                <label asp-for="DepartmentID" class="control-label"></label>    
+                <select asp-for="DepartmentID" class="form-control" asp-items="@(ViewBag.DepartmentID)">
+                 <option value="">Select Department</option>
+                </select>
+                </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
